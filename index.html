@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>Galactic Energy Harvester</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="stars"></div>
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" onclick="switchTab('register')">Register</button>
+      </div>
+      <div id="login-form" class="auth-form">
+        <h2>Login to Mission Control</h2>
+        <input type="text" id="login-username" placeholder="Commander ID">
+        <input type="password" id="login-password" placeholder="Access Code">
+        <div class="error-message" id="login-error"></div>
+        <button onclick="login()">Launch Mission</button>
+      </div>
+      <div id="register-form" class="auth-form hidden">
+        <h2>Register New Commander</h2>
+        <input type="text" id="register-username" placeholder="Choose Commander ID">
+        <input type="password" id="register-password" placeholder="Set Access Code">
+        <input type="password" id="register-confirm-password" placeholder="Confirm Access Code">
+        <div class="error-message" id="register-error"></div>
+        <button onclick="register()">Begin Mission</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-container">
+    <div class="stats">
+      <h1>Galactic Energy Harvester</h1>
+      <div class="player-info">
+        Commander: <span id="current-player">Anonymous</span>
+        <button class="delete-account" onclick="deleteAccount()">Abort Mission</button>
+      </div>
+      <div class="resource-count">
+        Galactic Units: <span id="cookie-count">0</span>
+      </div>
+      <div class="resource-count">
+        Lifetime Units: <span id="lifetime-cookies">0</span>
+      </div>
+      <div class="cps">
+        Units per second: <span id="cps">0</span>
+      </div>
+    </div>
+
+    <div class="moon-container">
+      <img id="cookie" class="moon" src="pngimg.com - moon_PNG3.png" alt="Moon">
+    </div>
+
+    <div class="upgrades">
+      <h2>Space Program</h2>
+      <div id="upgrades-container">
+        <!-- Upgrades will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="leaderboard">
+      <h2>Mission Control Rankings</h2>
+      <div id="leaderboard-list">
+        <!-- Leaderboard entries will be inserted here -->
+      </div>
+    </div>
+  </div>
+  
+  <div id="confirm-delete-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Abort Mission?</h2>
+      <p>This will permanently delete your commander profile and progress.</p>
+      <p>Please enter your access code to confirm:</p>
+      <input type="password" id="delete-password" placeholder="Access Code">
+      <div class="error-message" id="delete-error"></div>
+      <div class="modal-buttons">
+        <button onclick="confirmDelete()">Confirm Abort</button>
+        <button onclick="cancelDelete()">Return to Mission</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="dev-panel" class="modal hidden">
+    <div class="modal-content">
+      <h2>Developer Panel</h2>
+      <input type="password" id="dev-password" placeholder="Enter developer password">
+      <div class="error-message" id="dev-password-error"></div>
+      <div id="dev-controls" class="hidden">
+        <button onclick="game.addCookies(1000000)">Add 1M Stardust</button>
+        <button onclick="game.addCookies(1000000000)">Add 1B Stardust</button>
+        <button onclick="game.addCookies(1000000000000)">Add 1T Stardust</button>
+        <button onclick="game.resetGame()">Reset Game</button>
+        <button onclick="game.displayOverview()">Show Overview</button>
+      </div>
+      <div id="overview-panel" class="hidden">
+        <!-- Overview content will be populated by JavaScript -->
+      </div>
+      <button class="close-dev-panel" onclick="closeDevPanel()">Close</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
