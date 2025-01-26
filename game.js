@@ -1,173 +1,18 @@
+import UPGRADES from './upgrades.js';
+
 class SpaceGame {
   constructor() {
     this.username = null;
     this.cookies = 0;
     this.lifetimeCookies = 0;
-
-    // Replace upgrades with new space-themed ones
-    this.upgrades = {
-      // Cursor Category
-      astroFingers: {
-        owned: 0,
-        cost: 1000,
-        cps: 0.1,
-        description: "Increases Cursor CPS by 0.1 with the precision of a space explorer's finger"
-      },
-      cosmicCream: {
-        owned: 0,
-        cost: 10000,
-        cps: 0.5,
-        description: "Increases Cursor CPS by 0.5, infused with intergalactic hand lotion"
-      },
-      quantumGrip: {
-        owned: 0,
-        cost: 100000,
-        cps: 1,
-        description: "Enables simultaneous input from multiple universes"
-      },
-      stellarSwipe: {
-        owned: 0,
-        cost: 1000000,
-        cps: 5,
-        description: "An interdimensional swipe of the finger"
-      },
-
-      // Grandma Category
-      starryBiscuit: {
-        owned: 0,
-        cost: 1000,
-        cps: 0.5,
-        description: "Powered by the light of distant stars"
-      },
-      moonlitElder: {
-        owned: 0,
-        cost: 10000,
-        cps: 1,
-        description: "Drawn from the quiet power of lunar tides"
-      },
-      galacticOven: {
-        owned: 0,
-        cost: 100000,
-        cps: 2,
-        description: "Fueled by advanced cosmic technology"
-      },
-      nebulasWisdom: {
-        owned: 0,
-        cost: 1000000,
-        cps: 5,
-        description: "Drawn from ancient knowledge deep in the nebulae"
-      },
-
-      // Farm Category
-      meteorHarvest: {
-        owned: 0,
-        cost: 10000,
-        cps: 0.1,
-        description: "Cultivated on an asteroid farm"
-      },
-      cosmicFertilizer: {
-        owned: 0,
-        cost: 100000,
-        cps: 0.5,
-        description: "Nourishing crops with stardust and space minerals"
-      },
-      gravitationalGrowth: {
-        owned: 0,
-        cost: 1000000,
-        cps: 2,
-        description: "Plants thriving under artificial gravity"
-      },
-
-      // Advanced Categories
-      quantumVault: {
-        owned: 0,
-        cost: 10000000,
-        cps: 0.1,
-        description: "Safeguarding resources in a collapsing star's event horizon"
-      },
-      cosmicCurrency: {
-        owned: 0,
-        cost: 100000000,
-        cps: 0.5,
-        description: "Facilitated by interstellar trade networks"
-      },
-      solarRituals: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Harnessing energy from the heart of a star"
-      },
-      quantumSorcery: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Bending the very fabric of space and time"
-      },
-      wormholeFreight: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Sending items through a wormhole to distant places instantly"
-      },
-
-      // Super Advanced Categories
-      darkMatterExtraction: {
-        owned: 0,
-        cost: 100000000000,
-        cps: 1,
-        description: "Tapping into the mysterious properties of dark matter"
-      },
-      stellarGateway: {
-        owned: 0,
-        cost: 1000000000000,
-        cps: 1,
-        description: "Opening portals to alternate realities and distant worlds"
-      },
-      timeVortex: {
-        owned: 0,
-        cost: 10000000000000,
-        cps: 1,
-        description: "Warping time to extract energy from any point in history"
-      },
-      antimatterReactor: {
-        owned: 0,
-        cost: 100000000000000,
-        cps: 1,
-        description: "Using antimatter to fuel interstellar production"
-      },
-
-      // Ultimate Categories
-      prismaticSingularity: {
-        owned: 0,
-        cost: 1000000000000000,
-        cps: 1,
-        description: "Bending light and energy through a singularity"
-      },
-      supernovaIllumination: {
-        owned: 0,
-        cost: 10000000000000000,
-        cps: 1,
-        description: "Powered by the radiant energy of a dying star"
-      },
-      fractalCosmos: {
-        owned: 0,
-        cost: 100000000000000000,
-        cps: 1,
-        description: "Tapping into infinite fractal dimensions within the universe"
-      },
-      cosmicDebugger: {
-        owned: 0,
-        cost: 1000000000000000000,
-        cps: 1,
-        description: "Debugging reality itself across alternate timelines"
-      },
-      gravityWellMastery: {
-        owned: 0,
-        cost: 1000000000,
-        cps: 0.001, 
-        description: "Gravity wells bend space-time to generate resources"
-      }
-    };
+    // Deep clone the upgrades with their initial costs preserved
+    this.upgrades = Object.keys(UPGRADES).reduce((acc, key) => {
+      acc[key] = {
+        ...UPGRADES[key],
+        initialCost: UPGRADES[key].cost
+      };
+      return acc;
+    }, {});
 
     // Initialize auth same as before
     const authToken = this.getCookie('authToken') || localStorage.getItem('authToken');
@@ -286,158 +131,13 @@ class SpaceGame {
     this.username = null;
     this.cookies = 0;
     this.lifetimeCookies = 0;
-    this.upgrades = {
-      astroFingers: {
-        owned: 0,
-        cost: 1000,
-        cps: 0.1,
-        description: "Increases Cursor CPS by 0.1 with the precision of a space explorer's finger"
-      },
-      cosmicCream: {
-        owned: 0,
-        cost: 10000,
-        cps: 0.5,
-        description: "Increases Cursor CPS by 0.5, infused with intergalactic hand lotion"
-      },
-      quantumGrip: {
-        owned: 0,
-        cost: 100000,
-        cps: 1,
-        description: "Enables simultaneous input from multiple universes"
-      },
-      stellarSwipe: {
-        owned: 0,
-        cost: 1000000,
-        cps: 5,
-        description: "An interdimensional swipe of the finger"
-      },
-      starryBiscuit: {
-        owned: 0,
-        cost: 1000,
-        cps: 0.5,
-        description: "Powered by the light of distant stars"
-      },
-      moonlitElder: {
-        owned: 0,
-        cost: 10000,
-        cps: 1,
-        description: "Drawn from the quiet power of lunar tides"
-      },
-      galacticOven: {
-        owned: 0,
-        cost: 100000,
-        cps: 2,
-        description: "Fueled by advanced cosmic technology"
-      },
-      nebulasWisdom: {
-        owned: 0,
-        cost: 1000000,
-        cps: 5,
-        description: "Drawn from ancient knowledge deep in the nebulae"
-      },
-      meteorHarvest: {
-        owned: 0,
-        cost: 10000,
-        cps: 0.1,
-        description: "Cultivated on an asteroid farm"
-      },
-      cosmicFertilizer: {
-        owned: 0,
-        cost: 100000,
-        cps: 0.5,
-        description: "Nourishing crops with stardust and space minerals"
-      },
-      gravitationalGrowth: {
-        owned: 0,
-        cost: 1000000,
-        cps: 2,
-        description: "Plants thriving under artificial gravity"
-      },
-      quantumVault: {
-        owned: 0,
-        cost: 10000000,
-        cps: 0.1,
-        description: "Safeguarding resources in a collapsing star's event horizon"
-      },
-      cosmicCurrency: {
-        owned: 0,
-        cost: 100000000,
-        cps: 0.5,
-        description: "Facilitated by interstellar trade networks"
-      },
-      solarRituals: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Harnessing energy from the heart of a star"
-      },
-      quantumSorcery: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Bending the very fabric of space and time"
-      },
-      wormholeFreight: {
-        owned: 0,
-        cost: 10000000000,
-        cps: 1,
-        description: "Sending items through a wormhole to distant places instantly"
-      },
-      darkMatterExtraction: {
-        owned: 0,
-        cost: 100000000000,
-        cps: 1,
-        description: "Tapping into the mysterious properties of dark matter"
-      },
-      stellarGateway: {
-        owned: 0,
-        cost: 1000000000000,
-        cps: 1,
-        description: "Opening portals to alternate realities and distant worlds"
-      },
-      timeVortex: {
-        owned: 0,
-        cost: 10000000000000,
-        cps: 1,
-        description: "Warping time to extract energy from any point in history"
-      },
-      antimatterReactor: {
-        owned: 0,
-        cost: 100000000000000,
-        cps: 1,
-        description: "Using antimatter to fuel interstellar production"
-      },
-      prismaticSingularity: {
-        owned: 0,
-        cost: 1000000000000000,
-        cps: 1,
-        description: "Bending light and energy through a singularity"
-      },
-      supernovaIllumination: {
-        owned: 0,
-        cost: 10000000000000000,
-        cps: 1,
-        description: "Powered by the radiant energy of a dying star"
-      },
-      fractalCosmos: {
-        owned: 0,
-        cost: 100000000000000000,
-        cps: 1,
-        description: "Tapping into infinite fractal dimensions within the universe"
-      },
-      cosmicDebugger: {
-        owned: 0,
-        cost: 1000000000000000000,
-        cps: 1,
-        description: "Debugging reality itself across alternate timelines"
-      },
-      gravityWellMastery: {
-        owned: 0,
-        cost: 1000000000,
-        cps: 0.001, 
-        description: "Gravity wells bend space-time to generate resources"
-      }
-    };
+    this.upgrades = Object.keys(UPGRADES).reduce((acc, key) => {
+      acc[key] = {
+        ...UPGRADES[key],
+        initialCost: UPGRADES[key].cost
+      };
+      return acc;
+    }, {});
     
     this.updateDisplay();
     this.displayLeaderboard();
@@ -482,21 +182,39 @@ class SpaceGame {
     const container = document.getElementById('upgrades-container');
     container.innerHTML = '';
 
-    Object.entries(this.upgrades).forEach(([type, upgrade]) => {
-      const div = document.createElement('div');
-      div.className = 'upgrade';
-      if (this.cookies < upgrade.cost) {
-        div.className += ' disabled';
-      }
-      div.onclick = () => this.buyUpgrade(type); 
-      div.innerHTML = `
-        <h3>${this.formatUpgradeName(type)}</h3>
-        <p>${upgrade.description}</p>
-        <p>Cost: <span class="cost">${this.formatNumber(upgrade.cost)}</span> stardust</p>
-        <p>You have: <span class="owned">${upgrade.owned}</span></p>
-        <p>Produces ${upgrade.cps} stardust per second</p>
-      `;
-      container.appendChild(div);
+    // Group upgrades by category
+    const categories = {
+      'Cursor': ['astroFingers', 'cosmicCream', 'quantumGrip', 'stellarSwipe'],
+      'Grandma': ['starryBiscuit', 'moonlitElder', 'galacticOven', 'nebulasWisdom'],
+      'Farm': ['meteorHarvest', 'cosmicFertilizer', 'gravitationalGrowth'],
+      'Advanced': ['quantumVault', 'cosmicCurrency', 'solarRituals', 'quantumSorcery', 'wormholeFreight'],
+      'Super Advanced': ['darkMatterExtraction', 'stellarGateway', 'timeVortex', 'antimatterReactor'],
+      'Ultimate': ['prismaticSingularity', 'supernovaIllumination', 'fractalCosmos', 'cosmicDebugger', 'gravityWellMastery']
+    };
+
+    Object.entries(categories).forEach(([categoryName, upgradeKeys]) => {
+      const categoryHeader = document.createElement('h3');
+      categoryHeader.textContent = categoryName;
+      container.appendChild(categoryHeader);
+
+      upgradeKeys.forEach(type => {
+        const upgrade = this.upgrades[type];
+        const div = document.createElement('div');
+        div.id = type;
+        div.className = 'upgrade';
+        if (this.cookies < upgrade.cost) {
+          div.className += ' disabled';
+        }
+        div.onclick = () => this.buyUpgrade(type); 
+        div.innerHTML = `
+          <h3>${this.formatUpgradeName(type)}</h3>
+          <p class="description">${upgrade.description}</p>
+          <p>Cost: <span class="cost">${this.formatNumber(upgrade.cost)}</span> stardust</p>
+          <p>You have: <span class="owned">${upgrade.owned}</span></p>
+          <p>Produces ${upgrade.cps} stardust per second</p>
+        `;
+        container.appendChild(div);
+      });
     });
   }
 
@@ -737,18 +455,12 @@ class SpaceGame {
   }
 }
 
-let game = new SpaceGame();
+const game = new SpaceGame();
 
-document.getElementById('dev-controls').innerHTML = `
-  <button onclick="game.addDevCookies(1000000)">Add 1M Stardust</button>
-  <button onclick="game.addDevCookies(1000000000)">Add 1B Stardust</button>
-  <button onclick="game.addDevCookies(1000000000000)">Add 1T Stardust</button>
-  <button onclick="game.resetGame()">Reset Game</button>
-  <button onclick="game.displayOverview()">System Overview</button>
-  <button onclick="game.closeOverview()">Close Overview</button>
-`;
+// Expose global handlers to window object
+window.game = game;
 
-function switchTab(tab) {
+window.switchTab = (tab) => {
   const loginForm = document.getElementById('login-form');
   const registerForm = document.getElementById('register-form');
   const tabs = document.querySelectorAll('.tab-btn');
@@ -763,9 +475,9 @@ function switchTab(tab) {
     loginForm.classList.add('hidden');
     registerForm.classList.remove('hidden');
   }
-}
+};
 
-async function login() {
+window.loginHandler = async () => {
   const username = document.getElementById('login-username').value;
   const password = document.getElementById('login-password').value;
   const errorElement = document.getElementById('login-error');
@@ -776,9 +488,9 @@ async function login() {
   } catch (error) {
     errorElement.textContent = error.message;
   }
-}
+};
 
-async function register() {
+window.registerHandler = async () => {
   const username = document.getElementById('register-username').value;
   const password = document.getElementById('register-password').value;
   const confirmPassword = document.getElementById('register-confirm-password').value;
@@ -795,9 +507,9 @@ async function register() {
   } catch (error) {
     errorElement.textContent = error.message;
   }
-}
+};
 
-async function confirmDelete() {
+window.confirmDeleteHandler = async () => {
   const password = document.getElementById('delete-password').value;
   const errorElement = document.getElementById('delete-error');
   
@@ -807,24 +519,35 @@ async function confirmDelete() {
   } catch (error) {
     errorElement.textContent = error.message;
   }
-}
+};
 
-function cancelDelete() {
+window.cancelDeleteHandler = () => {
   document.getElementById('confirm-delete-modal').classList.add('hidden');
   document.getElementById('delete-password').value = '';
   document.getElementById('delete-error').textContent = '';
-}
+};
 
-function deleteAccount() {
+window.deleteAccountHandler = () => {
   document.getElementById('confirm-delete-modal').classList.remove('hidden');
-}
+};
 
-function closeDevPanel() {
+window.closeDevPanel = () => {
   document.getElementById('dev-panel').classList.add('hidden');
-}
+};
 
 document.getElementById('dev-password').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
     game.checkDevPassword(this.value);
   }
 });
+
+document.getElementById('dev-controls').innerHTML = `
+  <button onclick="game.addDevCookies(1000000)">Add 1M Stardust</button>
+  <button onclick="game.addDevCookies(1000000000)">Add 1B Stardust</button>
+  <button onclick="game.addDevCookies(1000000000000)">Add 1T Stardust</button>
+  <button onclick="game.resetGame()">Reset Game</button>
+  <button onclick="game.displayOverview()">System Overview</button>
+  <button onclick="game.closeOverview()">Close Overview</button>
+`;
+
+export default game;

@@ -16,7 +16,7 @@
         <input type="text" id="login-username" placeholder="Commander ID">
         <input type="password" id="login-password" placeholder="Access Code">
         <div class="error-message" id="login-error"></div>
-        <button onclick="login()">Launch Mission</button>
+        <button onclick="window.loginHandler()">Launch Mission</button>
       </div>
       <div id="register-form" class="auth-form hidden">
         <h2>Register New Commander</h2>
@@ -24,7 +24,7 @@
         <input type="password" id="register-password" placeholder="Set Access Code">
         <input type="password" id="register-confirm-password" placeholder="Confirm Access Code">
         <div class="error-message" id="register-error"></div>
-        <button onclick="register()">Begin Mission</button>
+        <button onclick="window.registerHandler()">Begin Mission</button>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
       <h1>Galactic Energy Harvester</h1>
       <div class="player-info">
         Commander: <span id="current-player">Anonymous</span>
-        <button class="delete-account" onclick="deleteAccount()">Abort Mission</button>
+        <button class="delete-account" onclick="window.deleteAccountHandler()">Abort Mission</button>
       </div>
       <div class="resource-count">
         Galactic Units: <span id="cookie-count">0</span>
@@ -74,8 +74,8 @@
       <input type="password" id="delete-password" placeholder="Access Code">
       <div class="error-message" id="delete-error"></div>
       <div class="modal-buttons">
-        <button onclick="confirmDelete()">Confirm Abort</button>
-        <button onclick="cancelDelete()">Return to Mission</button>
+        <button onclick="window.confirmDeleteHandler()">Confirm Abort</button>
+        <button onclick="window.cancelDeleteHandler()">Return to Mission</button>
       </div>
     </div>
   </div>
@@ -86,19 +86,20 @@
       <input type="password" id="dev-password" placeholder="Enter developer password">
       <div class="error-message" id="dev-password-error"></div>
       <div id="dev-controls" class="hidden">
-        <button onclick="game.addCookies(1000000)">Add 1M Stardust</button>
-        <button onclick="game.addCookies(1000000000)">Add 1B Stardust</button>
-        <button onclick="game.addCookies(1000000000000)">Add 1T Stardust</button>
-        <button onclick="game.resetGame()">Reset Game</button>
-        <button onclick="game.displayOverview()">Show Overview</button>
+        <button onclick="window.game.addDevCookies(1000000)">Add 1M Stardust</button>
+        <button onclick="window.game.addDevCookies(1000000000)">Add 1B Stardust</button>
+        <button onclick="window.game.addDevCookies(1000000000000)">Add 1T Stardust</button>
+        <button onclick="window.game.resetGame()">Reset Game</button>
+        <button onclick="window.game.displayOverview()">Show Overview</button>
       </div>
       <div id="overview-panel" class="hidden">
         <!-- Overview content will be populated by JavaScript -->
       </div>
-      <button class="close-dev-panel" onclick="closeDevPanel()">Close</button>
+      <button class="close-dev-panel" onclick="window.closeDevPanel()">Close</button>
     </div>
   </div>
 
-  <script src="game.js"></script>
+  <script src="upgrades.js" type="module"></script>
+  <script src="game.js" type="module"></script>
 </body>
 </html>
